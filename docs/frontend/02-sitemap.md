@@ -58,7 +58,7 @@ Learn German
 │ ├── Overview
 │ ├── Description
 │ ├── Curriculum
-│ ├── Learning Outcomes
+│ ├── Learn
 │ ├── Instructor
 │ ├── Reviews
 │ ├── Preview Lessons
@@ -67,7 +67,7 @@ Learn German
 ├── My Learning
 │ │
 │ ├── Continue Learning
-│ ├── Current Courses
+│ ├── ing OutcomesCurrent Courses
 │ ├── Completed Courses
 │ ├── Learning History
 │ └── Bookmarked Courses
@@ -103,3 +103,108 @@ Learn German
 ├── Completed Certificates
 ├── Certificate Detail
 └── Download Certificate
+
+---
+
+# Explore Germany
+
+Explore Germany is the knowledge hub of DeutschHub.
+
+Unlike Learn German, which follows a structured learning journey, Explore Germany is designed for exploration and discovery.
+
+Its purpose is to help users understand Germany through curated knowledge about its geography, culture, nature and lifestyle.
+
+Users are free to explore topics based on their own interests without following a predefined learning path.
+
+---
+
+## User Goal
+
+Users visit Explore Germany to:
+
+- Discover Germany beyond language learning.
+- Learn about German cities and regions.
+- Explore German culture and traditions.
+- Understand the country's nature and landscapes.
+- Experience authentic German food and lifestyle.
+
+---
+
+## Information Architecture
+
+Explore Germany
+│
+├── Entry Experience
+│ │
+│ ├── Featured
+│ │ ├── Featured Articles
+│ │ ├── Trending Topics
+│ │ └── Recommended Reading
+│ │
+│ └── Search
+│ ├── Search Articles
+│ ├── Search Cities
+│ └── Search Topics
+│
+├──Knowledge Categories
+│ │
+│ ├── Cities
+│ │ ├── City List
+│ │ ├── City Detail
+│ │ └── Related Articles
+│ │
+│ ├── Nature
+│ │ ├── Mountains
+│ │ ├── Lakes
+│ │ ├── Forests
+│ │ └── National Parks
+│ │
+│ ├── Culture
+│ │ ├── Traditions
+│ │ ├── Festivals
+│ │ ├── History
+│ │ ├── Lifestyle
+│ │ └── Etiquette
+│ │
+│ └── Food
+│ ├── Traditional Food
+│ ├── Regional Food
+│ ├── Desserts
+│ └── Drinks
+
+---
+
+## Business Boundary
+
+Explore Germany focuses on objective knowledge about Germany.
+
+This area does not include:
+
+- German language learning
+- Study abroad guidance
+- Personal experiences
+- User community
+
+These responsibilities belong to other business areas inside DeutschHub.
+
+---
+
+## User Journey
+
+Explore
+↓
+Discover
+↓
+Read
+↓
+Learn
+↓
+Continue Exploring
+
+## Design Principles
+
+Explore Germany is organized as a knowledge base instead of a learning platform.
+
+Content is grouped into clear knowledge categories to help users quickly find trustworthy information without information overload.
+
+## The experience emphasizes exploration rather than progression.
