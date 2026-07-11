@@ -208,3 +208,138 @@ Explore Germany is organized as a knowledge base instead of a learning platform.
 Content is grouped into clear knowledge categories to help users quickly find trustworthy information without information overload.
 
 ## The experience emphasizes exploration rather than progression.
+
+---
+
+# Stories
+
+Stories is the experience hub of DeutschHub.
+
+Unlike Explore Germany, which focuses on objective knowledge, Stories is designed to share authentic human experiences related to Germany.
+
+This section inspires learners by presenting real journeys, personal reflections and practical experiences from people who have studied, traveled or lived in Germany.
+
+The goal is not only to tell stories, but also to encourage users to continue their own journey.
+
+---
+
+## User Goal
+
+Users visit Stories to:
+
+- Read authentic experiences from real people.
+- Gain motivation from successful journeys.
+- Learn practical lessons from others.
+- Understand everyday life in Germany.
+- Find inspiration for their own journey.
+
+---
+
+## User Journey
+
+Discover
+↓
+Read
+↓
+Relate
+↓
+Get Inspired
+↓
+Take Action
+
+---
+
+## Information Architecture
+
+Stories
+│
+├── Featured
+│ ├── Featured Stories
+│ ├── Editor's Picks
+│ └── Latest Stories
+│
+├── Search
+│ ├── Search Stories
+│ ├── Search Authors
+│ └── Search Topics
+│
+├── Learning Journey
+│ ├── From Beginner to B1
+│ ├── From B1 to B2
+│ ├── Language Learning Tips
+│ └── Learning Experiences
+│
+├── Study Abroad Journey
+│ ├── Ausbildung Stories
+│ ├── University Stories
+│ ├── Visa Experiences
+│ └── First Days in Germany
+│
+├── Living in Germany
+│ ├── Daily Life
+│ ├── Working in Germany
+│ ├── Cultural Differences
+│ └── Personal Reflections
+│
+├── Travel Stories
+│ ├── City Experiences
+│ ├── Hidden Places
+│ ├── Travel Tips
+│ └── Personal Adventures
+│
+└── Related Journey
+├── Learn German
+├── Study in Germany
+└── Explore Germany
+
+---
+
+## Business Boundary
+
+Stories focuses on authentic human experiences instead of objective knowledge.
+
+This area does not include:
+
+- German language courses
+- German cultural encyclopedia
+- Study abroad guides
+- User community and social networking
+
+These responsibilities belong to other business areas inside DeutschHub.
+
+---
+
+## Design Principles
+
+Stories is designed to inspire rather than instruct.
+
+Every story should:
+
+- Share authentic experiences.
+- Provide practical lessons.
+- Inspire users to continue their own journey.
+- Connect readers with relevant parts of DeutschHub.
+
+Stories are curated and reviewed by the DeutschHub team to ensure quality, authenticity and consistency.
+
+---
+
+## Call to Action
+
+Every story should guide users toward the next meaningful action.
+
+Examples:
+
+Learning Journey
+→ Start Learning German
+
+Study Abroad Journey
+→ Explore Study in Germany
+
+Travel Story
+→ Explore Germany
+
+Living in Germany
+→ Discover More Stories
+
+---
