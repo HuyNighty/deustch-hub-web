@@ -211,11 +211,11 @@ Content is grouped into clear knowledge categories to help users quickly find tr
 
 ---
 
-# Stories
+# Experiences
 
-Stories is the experience hub of DeutschHub.
+Experiences is the experience hub of DeutschHub.
 
-Unlike Explore Germany, which focuses on objective knowledge, Stories is designed to share authentic human experiences related to Germany.
+Unlike Explore Germany, which focuses on objective knowledge, Experiences is designed to share authentic human experiences related to Germany.
 
 This section inspires learners by presenting real journeys, personal reflections and practical experiences from people who have studied, traveled or lived in Germany.
 
@@ -225,7 +225,7 @@ The goal is not only to tell stories, but also to encourage users to continue th
 
 ## User Goal
 
-Users visit Stories to:
+Users visit Experiences to:
 
 - Read authentic experiences from real people.
 - Gain motivation from successful journeys.
@@ -251,15 +251,15 @@ Take Action
 
 ## Information Architecture
 
-Stories
+Experiences
 │
 ├── Featured
-│ ├── Featured Stories
+│ ├── Featured Experiences
 │ ├── Editor's Picks
-│ └── Latest Stories
+│ └── Latest Experiences
 │
 ├── Search
-│ ├── Search Stories
+│ ├── Search Experiences
 │ ├── Search Authors
 │ └── Search Topics
 │
@@ -270,8 +270,8 @@ Stories
 │ └── Learning Experiences
 │
 ├── Study Abroad Journey
-│ ├── Ausbildung Stories
-│ ├── University Stories
+│ ├── Ausbildung Experiences
+│ ├── University Experiences
 │ ├── Visa Experiences
 │ └── First Days in Germany
 │
@@ -281,7 +281,7 @@ Stories
 │ ├── Cultural Differences
 │ └── Personal Reflections
 │
-├── Travel Stories
+├── Travel Experiences
 │ ├── City Experiences
 │ ├── Hidden Places
 │ ├── Travel Tips
@@ -296,7 +296,7 @@ Stories
 
 ## Business Boundary
 
-Stories focuses on authentic human experiences instead of objective knowledge.
+Experiences focuses on authentic human experiences instead of objective knowledge.
 
 This area does not include:
 
@@ -311,7 +311,7 @@ These responsibilities belong to other business areas inside DeutschHub.
 
 ## Design Principles
 
-Stories is designed to inspire rather than instruct.
+Experiences is designed to inspire rather than instruct.
 
 Every story should:
 
