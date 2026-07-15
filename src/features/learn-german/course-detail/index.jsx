@@ -5,11 +5,14 @@ import { useCourseDetail } from "./hooks/useCourseDetail";
 import CourseHeader from "./components/CourseHeader";
 import CourseOverview from "./components/CourseOverview";
 import CourseSectionList from "./components/CourseSectionList";
+import { useEnrollAction } from "./hooks/useEnrollAction";
 
 export default function CourseDetail() {
   const { courseId } = useParams();
 
   const { course, loading, error } = useCourseDetail(courseId);
+
+  const { handleEnroll } = useEnrollAction(courseId);
 
   if (loading) return <p>Loading...</p>;
 
@@ -20,7 +23,7 @@ export default function CourseDetail() {
       <CourseHeader course={course} />
       <CourseOverview description={course.description} />
       <CourseSectionList sections={course.sections} />
-      <button>Enroll Course</button>
+      <button onClick={handleEnroll}>Enroll Course</button>
     </>
   );
 }

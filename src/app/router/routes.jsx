@@ -7,6 +7,8 @@ import StudyInGermany from "../../pages/StudyInGermany";
 import Experiences from "../../pages/Experiences";
 import Account from "../../pages/Account";
 import CourseDetailPage from "@/pages/LearnGerman/CourseDetail";
+import LoginForm from "@/features/auth/components/LoginForm";
+import RegisterForm from "@/features/auth/components/RegisterForm";
 
 export const router = createBrowserRouter([
   {
@@ -36,5 +38,13 @@ export const router = createBrowserRouter([
   {
     path: "/learn-german/courses/:courseId",
     element: <CourseDetailPage />,
+  },
+  {
+    path: "/login",
+    element: <LoginForm />,
+  },
+  {
+    path: "/register",
+    element: <RegisterForm />,
   },
 ]);
