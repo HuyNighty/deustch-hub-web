@@ -9,6 +9,7 @@ import Account from "../../pages/Account";
 import CourseDetailPage from "@/pages/LearnGerman/CourseDetail";
 import LoginForm from "@/features/auth/components/LoginForm";
 import RegisterForm from "@/features/auth/components/RegisterForm";
+import MyCourseDetailPage from "@/features/my-learning/my-course-detail";
 
 export const router = createBrowserRouter([
   {
@@ -47,4 +48,5 @@ export const router = createBrowserRouter([
     path: "/register",
     element: <RegisterForm />,
   },
+  { path: "/my-learning/courses/:courseId", element: <MyCourseDetailPage /> },
 ]);

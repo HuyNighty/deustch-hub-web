@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "@/features/auth/hooks/useAuth";
+
 import { enrollCourse } from "../services/enroll.service";
 
 export function useEnrollAction(courseId) {
@@ -19,9 +20,17 @@ export function useEnrollAction(courseId) {
       return;
     }
 
-    await enrollCourse(courseId);
+    try {
+      await enrollCourse(courseId);
 
-    navigate("/account/my-learning");
+      navigate(`/my-learning/courses/${courseId}`, {
+        replace: true,
+      });
+    } catch (error) {
+      console.error(error);
+
+      alert("Enroll failed.");
+    }
   }
 
   return {

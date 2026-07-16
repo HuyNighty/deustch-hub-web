@@ -5,25 +5,33 @@ import { useCourseDetail } from "./hooks/useCourseDetail";
 import CourseHeader from "./components/CourseHeader";
 import CourseOverview from "./components/CourseOverview";
 import CourseSectionList from "./components/CourseSectionList";
-import { useEnrollAction } from "./hooks/useEnrollAction";
+import CourseAction from "./components/CourseAction";
 
 export default function CourseDetail() {
   const { courseId } = useParams();
 
   const { course, loading, error } = useCourseDetail(courseId);
 
-  const { handleEnroll } = useEnrollAction(courseId);
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
-  if (loading) return <p>Loading...</p>;
-
-  if (error) return <p>Something went wrong.</p>;
+  if (error) {
+    return <p>Something went wrong.</p>;
+  }
 
   return (
     <>
       <CourseHeader course={course} />
-      <CourseOverview description={course.description} />
+
+      <CourseOverview course={course} />
+
       <CourseSectionList sections={course.sections} />
-      <button onClick={handleEnroll}>Enroll Course</button>
+
+      <CourseAction
+        courseId={course.courseId}
+        enrollmentStatus={course.enrollmentStatus}
+      />
     </>
   );
 }

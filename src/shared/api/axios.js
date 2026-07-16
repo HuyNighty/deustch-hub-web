@@ -7,21 +7,65 @@ import {
   clearTokens,
 } from "@/shared/auth/token";
 
-import { refresh } from "@/features/auth/services/auth.service";
+const baseURL = "http://localhost:8080/deutsch-hub/api/v1";
 
 export const api = axios.create({
-  baseURL: "http://localhost:8080/deutsch-hub/api/v1",
-  timeout: 10000,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  baseURL,
+  timeout: 10_000,
+  headers: { "Content-Type": "application/json" },
 });
 
-api.interceptors.request.use((config) => {
-  const token = getAccessToken();
+const refreshClient = axios.create({
+  baseURL,
+  timeout: 10_000,
+  headers: { "Content-Type": "application/json" },
+});
 
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+let refreshPromise = null;
+
+function isAuthEndpoint(url = "") {
+  return [
+    "/auth/login",
+    "/auth/register",
+    "/auth/refresh",
+    "/auth/logout",
+  ].some((path) => url.includes(path));
+}
+
+async function refreshAccessToken() {
+  if (!refreshPromise) {
+    const refreshToken = getRefreshToken();
+
+    if (!refreshToken) {
+      throw new Error("No refresh token");
+    }
+
+    refreshPromise = refreshClient
+      .post("/auth/refresh", { refreshToken })
+      .then((response) => {
+        const session = response.data.result;
+
+        saveAccessToken(session.accessToken);
+
+        if (session.refreshToken) {
+          saveRefreshToken(session.refreshToken);
+        }
+
+        return session.accessToken;
+      })
+      .finally(() => {
+        refreshPromise = null;
+      });
+  }
+
+  return refreshPromise;
+}
+
+api.interceptors.request.use((config) => {
+  const accessToken = getAccessToken();
+
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
   }
 
   return config;
@@ -33,33 +77,29 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
+    const shouldRefresh =
+      error.response?.status === 401 &&
+      !originalRequest?._retry &&
+      !isAuthEndpoint(originalRequest?.url);
 
-      try {
-        const refreshToken = getRefreshToken();
-
-        if (!refreshToken) {
-          clearTokens();
-
-          return Promise.reject(error);
-        }
-
-        const session = await refresh(refreshToken);
-
-        saveAccessToken(session.accessToken);
-        saveRefreshToken(session.refreshToken);
-
-        originalRequest.headers.Authorization = `Bearer ${session.accessToken}`;
-
-        return api(originalRequest);
-      } catch (refreshError) {
-        clearTokens();
-
-        return Promise.reject(refreshError);
-      }
+    if (!shouldRefresh) {
+      return Promise.reject(error);
     }
 
-    return Promise.reject(error);
+    originalRequest._retry = true;
+
+    try {
+      const newAccessToken = await refreshAccessToken();
+
+      originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+
+      return api(originalRequest);
+    } catch (refreshError) {
+      clearTokens();
+
+      window.location.assign("/login");
+
+      return Promise.reject(refreshError);
+    }
   },
 );
