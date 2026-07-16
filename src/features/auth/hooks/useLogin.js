@@ -7,12 +7,20 @@ function useLogin() {
   const location = useLocation();
 
   async function handleLogin(request) {
-    const session = await login(request);
-    saveAccessToken(session.accessToken);
+    try {
+      const session = await login(request);
 
-    const redirectTo = location.state?.redirectTo || "/account";
+      saveAccessToken(session.accessToken);
+      saveRefreshToken(session.refreshToken);
 
-    navigate(redirectTo, { replace: true });
+      const redirectTo = location.state?.redirectTo || "/account";
+
+      navigate(redirectTo, { replace: true });
+    } catch (error) {
+      console.error(error);
+
+      throw error;
+    }
   }
 
   return {

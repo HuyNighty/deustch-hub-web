@@ -10,10 +10,14 @@ export default function LoginForm() {
   async function onSubmit(e) {
     e.preventDefault();
 
-    await handleLogin({
-      usernameOrEmail,
-      password,
-    });
+    try {
+      await handleLogin({
+        usernameOrEmail,
+        password,
+      });
+    } catch {
+      alert("Login failed");
+    }
   }
 
   return (
@@ -27,6 +31,7 @@ export default function LoginForm() {
       />
 
       <br />
+      <br />
 
       <input
         type="password"
@@ -35,6 +40,7 @@ export default function LoginForm() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
+      <br />
       <br />
 
       <button type="submit">Login</button>
