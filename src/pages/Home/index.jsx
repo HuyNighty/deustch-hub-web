@@ -1,6 +1,10 @@
+import LogoutButton from "@/features/auth/components/LogoutButton";
+import { useAuth } from "@/features/auth/hooks/useAuth";
 import { Link } from "react-router-dom";
 
 export default function Home() {
+  const { isAuthenticated } = useAuth();
+
   return (
     <div>
       <h1>DeutschHub</h1>
@@ -9,10 +13,6 @@ export default function Home() {
         <ul>
           <li>
             <Link to="/learn-german">Learn German</Link>
-          </li>
-
-          <li>
-            <Link to="/my-learning">My Learning</Link>
           </li>
 
           <li>
@@ -27,9 +27,31 @@ export default function Home() {
             <Link to="/experiences">Experiences</Link>
           </li>
 
-          <li>
-            <Link to="/account">Account</Link>
-          </li>
+          {isAuthenticated ? (
+            <>
+              <li>
+                <Link to="/my-learning">My Learning</Link>
+              </li>
+
+              <li>
+                <Link to="/account">Account</Link>
+              </li>
+
+              <li>
+                <LogoutButton />
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </div>
