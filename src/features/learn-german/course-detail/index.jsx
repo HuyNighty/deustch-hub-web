@@ -29,7 +29,7 @@ export default function CourseDetail() {
       <CourseSectionList sections={course.sections} />
 
       <CourseAction
-        courseId={course.courseId}
+        courseId={course.id}
         enrollmentStatus={course.enrollmentStatus}
       />
     </>

@@ -1,7 +1,7 @@
 import { api } from "@/shared/api/axios";
 
-export async function getCourseDetail(courseId) {
-  const response = await api.get(`/courses/${courseId}`);
+export async function getViewerCourseDetail(courseId) {
+  const response = await api.get(`/courses/${courseId}/viewer`);
 
   return response.data.result;
 }

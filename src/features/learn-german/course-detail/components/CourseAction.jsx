@@ -9,6 +9,7 @@ export default function CourseAction({ courseId, enrollmentStatus }) {
 
   switch (enrollmentStatus) {
     case "ENROLLED":
+    case "IN_PROGRESS":
       return (
         <button onClick={() => navigate(`/my-learning/courses/${courseId}`)}>
           Continue Learning
