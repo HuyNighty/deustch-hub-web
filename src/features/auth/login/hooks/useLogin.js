@@ -17,7 +17,7 @@ function useLogin() {
 
       navigate(redirectTo, { replace: true });
     } catch (error) {
-      console.error(error);
+      console.log(error);
 
       throw error;
     }

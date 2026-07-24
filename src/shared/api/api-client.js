@@ -1,3 +1,4 @@
+import axios from "axios";
 import { toApiError } from "./api-error";
 import { unwrapApiResponse } from "./api-response";
 import { api } from "./axios";
@@ -8,7 +9,7 @@ async function request(config) {
 
     return unwrapApiResponse(response.data);
   } catch (error) {
-    throw toApiError(error);
+    handleRequestError(error);
   }
 }
 
@@ -26,8 +27,32 @@ const apiClient = {
     return request({ ...config, method: "patch", url, data });
   },
   delete(url, config = {}) {
-    return request({ ...config, method: "delete", config });
+    return request({ ...config, method: "delete", url });
   },
 };
+
+function handleRequestError(error) {
+  if (!axios.isAxiosError(error)) {
+    throw toApiError(error);
+  }
+
+  if (!error.response) {
+    throw toApiError({
+      message:
+        error.code === "ECONNABORTED"
+          ? "The request timed out. Please try again."
+          : "Unable to reach the server. Please check your connection.",
+    });
+  }
+
+  const payload = error.response.data;
+
+  throw toApiError({
+    code: payload?.code,
+    status: error.response.status,
+    message: payload?.message ?? error.message,
+    errors: payload?.errors,
+  });
+}
 
 export default apiClient;

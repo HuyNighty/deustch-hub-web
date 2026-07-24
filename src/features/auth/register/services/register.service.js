@@ -1,7 +1,5 @@
-import { api } from "@/shared/api/axios";
+import apiClient from "@/shared/api/api-client";
 
-export async function register(request) {
-  const response = await api.post("/auth/register", request);
-
-  return response.data.result;
+export function register(request) {
+  return apiClient.post("/auth/register", request);
 }
