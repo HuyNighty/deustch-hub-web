@@ -1,7 +1,5 @@
-import { api } from "@/shared/api/axios";
+import apiClient from "@/shared/api/api-client";
 
 export async function getMyCourse() {
-  const response = await api.get(`/me/courses`);
-
-  return response.data.result;
+  return apiClient.get(`/me/courses`);
 }

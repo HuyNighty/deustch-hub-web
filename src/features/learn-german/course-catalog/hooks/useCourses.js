@@ -10,6 +10,9 @@ export function useCourses() {
     async function fetchCourses() {
       try {
         const data = await getCourses();
+
+        console.log("Courses:", data);
+        console.log("Is array:", Array.isArray(data));
         setCourses(data);
       } catch (err) {
         setError(err);

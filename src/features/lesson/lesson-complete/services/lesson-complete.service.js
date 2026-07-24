@@ -1,10 +1,8 @@
-import { api } from "@/shared/api/axios";
+import apiClient from "@/shared/api/api-client";
 
-export async function completeLesson(courseId, lessonId, studyMinutes) {
-  const response = await api.post(
+export function completeLesson(courseId, lessonId, studyMinutes) {
+  return apiClient.post(
     `/me/courses/${courseId}/lessons/${lessonId}/complete`,
     { studyMinutes },
   );
-
-  return response.data.result;
 }
